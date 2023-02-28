@@ -1,0 +1,85 @@
+{
+  "miniprogramRoot": "miniprogram/",
+  "cloudfunctionRoot": "cloudfunctions/",
+  "setting": {
+    "urlCheck": true,
+    "es6": true,
+    "postcss": true,
+    "minified": true,
+    "newFeature": true,
+    "nodeModules": false,
+    "autoAudits": false,
+    "checkInvalidKey": true,
+    "coverView": true,
+    "checkSiteMap": true,
+    "uploadWithSourceMap": true,
+    "babelSetting": {
+      "ignore": [],
+      "disablePlugins": [],
+      "outputPath": ""
+    }
+  },
+  "appid": "wxb621d89e9eb2e966",
+  "projectname": "Garbage-master-opensource",
+  "libVersion": "2.9.3",
+  "simulatorType": "wechat",
+  "simulatorPluginLibVersion": {},
+  "cloudfunctionTemplateRoot": "cloudfunctionTemplate/",
+  "condition": {
+    "miniprogram": {
+      "list": [
+        {
+          "name": "db guide",
+          "pathName": "pages/databaseGuide/databaseGuide",
+          "query": ""
+        },
+        {
+          "name": "分类",
+          "pathName": "pages/sort/sort",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "拍照页面",
+          "pathName": "pages/ai/camera/camera",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "搜索",
+          "pathName": "pages/ai/search",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "筛选",
+          "pathName": "pages/ai/filter/filter",
+          "query": "type=3",
+          "scene": null
+        },
+        {
+          "name": "ai 搜索结果",
+          "pathName": "pages/result/gan",
+          "query": "keyword=花",
+          "scene": null
+        },
+        {
+          "name": "未查询到的结果提交",
+          "pathName": "pages/result/commit",
+          "query": "keyword=花",
+          "scene": null
+        }
+      ]
+    }
+  },
+  "compileType": "miniprogram",
+  "srcMiniprogramRoot": "miniprogram/",
+  "packOptions": {
+    "ignore": [],
+    "include": []
+  },
+  "editorSetting": {
+    "tabIndent": "insertSpaces",
+    "tabSize": 2
+  }
+}

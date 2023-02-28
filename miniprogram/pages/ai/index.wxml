@@ -1,0 +1,90 @@
+<view id="header">
+  <view bindtap="showChooseCity" id="currentCity" style="{{hideCurrentCity?'opacity: 0;':''}}">
+    <image id="location" src="{{images.location}}"></image>
+    <text id="city">{{config.cities[city].name}}</text>
+  </view>
+  <view bindtap="startSearch" id="fakeSearch" style="{{fakeSearchLeft}}">
+    <image id="magnifier" src="{{images.magnifier}}"></image>
+    <text>{{tipInfo.searchPlaceholder}}</text>
+  </view>
+  <view bindtap="switchToTest" id="broadcast">
+    <text>「全国版垃圾分类测试」上线，朋友圈晒成绩单，大家一起来比拼！</text>
+  </view>
+</view>
+
+<view class='ai-content' style="display:flex; flex-direction:row;">
+  <view class='ai-view'>
+    <image src='/images/paizhao.png' class='ai-paizhao' bindtap='onBindCamera' />
+    <text class='tip'>拍照识别</text>
+  </view>
+  <view class='ai-view'>
+    <image src='/images/speech_icon_128.png' class='ai-paizhao' bindtap='onBindMic' />
+    <text class='tip'>语音识别</text>
+  </view>
+</view>
+
+<view class="box" wx:if="{{SHOW_TOP}}">
+  <view class='arrow'></view>
+  <view class='body' bindtap='showModal'>
+    <text>点击「添加到我的小程序」</text>
+  </view>
+</view>
+
+<button class="share index" openType="share" style="display: block;">
+  <image src="/images/share.png"></image>
+  <text>分享</text>
+</button>
+<button class="cs index" bindtap="showZsm">
+  <image src="/images/qr_b.png"></image>
+  <text>打赏</text>
+</button>
+
+<view bindtap="closeOverlay" id="overlay" style="display: {{showChooseCity?'block':'none'}};"></view>
+<view id="chooseCity" style="display: {{showChooseCity?'block':'none'}};">
+  <view id="chooseCityCurrent">
+    <image src="{{images.location}}"></image>
+    <text>{{config.cities[city].name}}</text>
+  </view>
+  <scroll-view id="cities" scrollY="true">
+    <view bindtap="chooseCity" class="setting-item{{item.key===city?' checked':''}}" data-item-key="{{item.key}}" wx:for="{{cities}}" wx:key="key">{{item.name}}</view>
+  </scroll-view>
+</view>
+
+<view class="kefu-box">
+  <button open-type="contact" class="kefu-body">
+    <image class="img" src="/images/ai-chat.png"></image>
+    <text class="q-tx">联系我们</text>
+  </button>
+</view>
+
+<mp-half-screen-dialog etClass="weui-half-screen-dialog" show="{{micShow}}" bindclose="bindClose">
+  <view slot="title">
+    <text>语音识别</text>
+  </view>
+  <view slot="desc">
+    <view wx:if="{{canRecordStart}}" class="speak-style">
+      <!-- 预加载图片 hidden和display:none其中一个控制隐藏就可以 -->
+      <!--  
+      <image hidden="true" class="preload-img" src="../../images/speech_1.png"></image>
+      <image hidden="true" class="preload-img" src="../../images/speech_2.png"></image>
+      <image hidden="true" class="preload-img" src="../../images/speech_3.png"></image>
+      <image hidden="true" class="preload-img" src="../../images/speech_4.png"></image>
+      <image hidden="true" class="preload-img" src="../../images/speech_5.png"></image>
+      -->
+      <!-- 顺序显示 200ms一换 把wx:if换成hidden就不需要预加载了 -->
+      <image hidden="{{picIndex!=0}}" class="sound-style" src="../../images/speech_1.png"></image>
+      <image hidden="{{picIndex!=1}}" class="sound-style" src="../../images/speech_2.png"></image>
+      <image hidden="{{picIndex!=2}}" class="sound-style" src="../../images/speech_3.png"></image>
+      <image hidden="{{picIndex!=3}}" class="sound-style" src="../../images/speech_4.png"></image>
+      <image hidden="{{picIndex!=4}}" class="sound-style" src="../../images/speech_5.png"></image>
+      <text class="voice-content">录制中...</text>
+    </view>
+    <view wx:else class="speak-style">
+      <image class="sound-style" src="../../images/speech.png"></image>
+      <text class="voice-content">等待录制</text>
+    </view>
+  </view>
+  <view slot="footer">
+    <button type="primary" bindtouchstart='onTouchStart' bindtouchend='onTouchEnd'>按住说话</button>
+  </view>
+</mp-half-screen-dialog>
